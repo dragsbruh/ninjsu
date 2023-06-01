@@ -3,6 +3,14 @@
 > Pronounced Ninjutsu \
 > Uses namespace `nin`
 
+[Examples](./examples/)
+
+[Changelog](./changelog)
+
+[Github](https://github.com/dragsbruh/ninjsu)
+
+[View Examples](./examples)
+
 ## About
 
 NinJSu is a JavaScript library designed to facilitate the development of cross-platform games with maximum compatibility. It was created to provide you with extensive control over your game, without including fancy GUI editors.
@@ -12,12 +20,6 @@ NinJSu draws inspiration from several high-level game frameworks, such as [pygam
 ## Documentation
 
 This documentation provides a brief guide on installation and usage. Please note that the setup described here is based on what we consider to be a good NinJSu setup.
-
-[Examples](./examples/)
-
-[Changelog](./changelog)
-
-[Github](https://github.com/dragsbruh/ninjsu)[View Examples](./examples)
 
 ### Requirements
 

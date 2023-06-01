@@ -2,25 +2,16 @@
 
 ## TO-DO
 
-- [ ] Add mouse events
-
-- [ ] Add keyboard events
-
-- [ ] Add audio playback
-
-- [ ] Add masks
-
-- [ ] Add asset loading
-
-- [ ] Add image loading
-
-- [ ] Add Surface rendering
-
-- [ ] Add Surface
-
-- [x] Add rect area fill
-
-- [x] Add rects
+- [ ]    Add mouse events
+- [ ]    Add keyboard events
+- [ ]    Add audio playback
+- [ ]    Add masks
+- [ ]    Add asset loading
+- [ ]    Add image loading
+- [ ]    Add Surface rendering
+- [ ]    Add Surface
+- [x]    Add rect area fill
+- [x]    Add rects
 
 ## BUGS
 
