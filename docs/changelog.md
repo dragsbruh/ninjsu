@@ -2,16 +2,12 @@
 
 ## Changelog
 
-<details>
-<summary>v1.0.0-alpha</summary>
-
-+ Project Initialised
-+ Added basic functionality for canvas loading.
-+ Added colors and filling canvas with colors.
-+ Added basic example in dist/
-+ 1st June 2023
-
-</details>
+- v1.0.0-alpha
+  - Project Initialised
+  - Added basic functionality for canvas loading.
+  - Added colors and filling canvas with colors.
+  - Added basic example in dist/
+  - 1st June 2023
 
 ## Guidelines for developers
 
