@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "es6",
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "include": ["./src/*.ts"],
+  "exclude": ["docs", "dist"]
+}
