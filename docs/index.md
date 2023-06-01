@@ -7,11 +7,14 @@
 NinJSu is a powerful JavaScript library for developing cross-platform games with maximum compatibility. It offers extensive control over your game, drawing inspiration from frameworks like pygame and raylib.
 
 [Examples](./examples/)
+
 [Changelog](./changelog)
+
 [Documentation](./documentation)
+
 [Github](https://github.com/dragsbruh/ninjsu)
 
-With NinJSu, you can create visually stunning games that run smoothly across different platforms. The library provides a wide range of features and functionalities to give you full control over your game development process.
+With NinJSu, you can create games that run smoothly across different platforms. The library provides a wide range of features and functionalities to give you full control over your game development process.
 
 Whether you're a beginner or an experienced game developer, NinJSu helps you bring your game ideas to life with ease.
 

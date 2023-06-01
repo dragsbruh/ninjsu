@@ -14,7 +14,9 @@ NinJSu draws inspiration from several high-level game frameworks, such as [pygam
 This documentation provides a brief guide on installation and usage. Please note that the setup described here is based on what we consider to be a good NinJSu setup.
 
 [Examples](./examples/)
+
 [Changelog](./changelog)
+
 [Github](https://github.com/dragsbruh/ninjsu)[View Examples](./examples)
 
 ### Requirements

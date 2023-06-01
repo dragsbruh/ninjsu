@@ -7,6 +7,7 @@
   - Modified display.fill to render rects
   - 1st June 2023
 
+
 - v1.0.0-alpha
   - Project Initialised
   - Added basic functionality for canvas loading.
@@ -24,5 +25,7 @@
 ## Meta
 
 [Examples](./examples/)
+
 [Documentation](./documentation)
+
 [Github](https://github.com/dragsbruh/ninjsu)
