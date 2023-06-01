@@ -5,11 +5,11 @@
 <details>
 <summary>v1.0.0-alpha</summary>
 
-- Project Initialised
-- Added basic functionality for canvas loading.
-- Added colors and filling canvas with colors.
-- Added basic example in dist/
-- 1st June 2023
++ Project Initialised
++ Added basic functionality for canvas loading.
++ Added colors and filling canvas with colors.
++ Added basic example in dist/
++ 1st June 2023
 
 </details>
 
@@ -18,3 +18,9 @@
 - Be breif.
 - Use [semver](https://semver.org/).
 - Mention date of release.
+
+## Meta
+
+[Examples](./examples/)
+[Documentation](./documentation)
+[Github](https://github.com/dragsbruh/ninjsu)
