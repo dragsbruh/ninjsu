@@ -12,6 +12,17 @@ namespace nin {
 			}
 			return gl;
 		}
+		public static fillScissor(color: Color, gl: WebGLRenderingContext, rect: Rect, canvas: HTMLCanvasElement) {
+			gl.enable(gl.SCISSOR_TEST);
+			gl.scissor(rect.x, canvas.height - (rect.height + rect.y), rect.width, rect.height); // TODO: Change this when rect properties are implemented.
+			gl.clearColor(...color._get_gl_compatible());
+			gl.clear(gl.COLOR_BUFFER_BIT);
+			gl.disable(gl.SCISSOR_TEST);
+		}
+
+		// TODO: Highly experimental!! Not Implemented
+		public static readonly vertexShaderSource: string = "\nattribute vec2 position;\n\nvoid main() {\n  gl_Position = vec4(position, 0.0, 1.0);\n}\n";
+		public static readonly fragmentShaderSource: string = "\nprecision mediump float;\nuniform sampler2D texture;\nvarying vec2 texCoord;\n\nvoid main() {\n  gl_FragColor = texture2D(texture, texCoord);\n}\n";
 	}
 
 	export class Display {
@@ -36,12 +47,19 @@ namespace nin {
 			}
 			this._gl = GLUtil.initgl(this._canvas);
 		}
-		public fill(color: Color) {
+		public fill(color: Color, rect?: Rect) {
 			if (color === undefined) {
-				return
+				return;
 			}
-			this._gl.clearColor(...color._get_gl_compatible())
-			this._gl.clear(this._gl.COLOR_BUFFER_BIT | this._gl.DEPTH_BUFFER_BIT)
+			if (rect === undefined) {
+				this._gl.clearColor(...color._get_gl_compatible());
+				this._gl.clear(this._gl.COLOR_BUFFER_BIT | this._gl.DEPTH_BUFFER_BIT);
+			} else {
+				GLUtil.fillScissor(color, this._gl, rect, this._canvas);
+			}
+		}
+		public _get_gl_context() {
+			return this._gl;
 		}
 	}
 
@@ -82,5 +100,35 @@ namespace nin {
 		set G(value: number) { this._G = value; this._check_colors(); }
 		set B(value: number) { this._B = value; this._check_colors(); }
 		set A(value: number) { this._A = value; this._check_colors(); }
+	}
+
+	export class Rect {
+		private _x: number;
+		private _y: number;
+		private _width: number;
+		private _height: number;
+		constructor(x: number, y: number, width: number, height: number) {
+			this._x = x;
+			this._y = y;
+			this._width = width;
+			this._height = height;
+		}
+		get x(): number { return this._x };
+		get y(): number { return this._y };
+		get width(): number { return this._width };
+		get height(): number { return this._height };
+
+		set x(value: number) {	// This part will be useful later on, when rect properties is implemented.
+			this._x = value;
+		}
+		set y(value: number) {
+			this._y = value;
+		}
+		set width(value: number) {
+			this._width = value;
+		}
+		set height(value: number) {
+			this._height = value;
+		}
 	}
 }

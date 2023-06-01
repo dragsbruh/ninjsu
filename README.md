@@ -1,7 +1,7 @@
 # NinJSu
 
 > Pronounced Ninjutsu\
-> Latest version: v1.0.0-alpha
+> Latest version: v1.1.0-alpha
 
 ## About
 
