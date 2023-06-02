@@ -103,10 +103,11 @@ namespace nin {
 	}
 
 	export class Rect {
-		private _x: number;
-		private _y: number;
-		private _width: number;
-		private _height: number;
+		private _x		: number;
+		private _y		: number;
+		private _width	: number;
+		private _height	: number;
+
 		constructor(x: number, y: number, width: number, height: number) {
 			this._x = x;
 			this._y = y;
@@ -117,8 +118,15 @@ namespace nin {
 		get y(): number { return this._y };
 		get width(): number { return this._width };
 		get height(): number { return this._height };
+		get centerx(): number { return this._x + (this._width / 2); };
+		get centery(): number { return this._y + (this._height / 2); };
+		get center(): [number, number] { return [this.centerx, this.centery]; };
+		get left(): number { return this._x; };
+		get right(): number { return this._x + this._width; };
+		get top(): number { return this._y; };
+		get bottom(): number { return this._y + this._height; };
 
-		set x(value: number) {	// This part will be useful later on, when rect properties is implemented.
+		set x(value: number) { // TODO: The below part is experimental. Needs verification.
 			this._x = value;
 		}
 		set y(value: number) {
@@ -129,6 +137,28 @@ namespace nin {
 		}
 		set height(value: number) {
 			this._height = value;
+		}
+		set center(value: [number, number]) {
+			this._x = value[0] - (this.width / 2);
+			this._y = value[1] - (this.height / 2);
+		}
+		set centerx(value: number) {
+			this._x = value - (this.width / 2);
+		}
+		set centery(value: number) {
+			this._y = value - (this.height / 2);
+		}
+		set left(value: number) {
+			this._x = value;
+		}
+		set right(value: number) {
+			this._x = value + this.width;
+		}
+		set top(value: number) {
+			this._y = value;
+		}
+		set bottom(value: number) {
+			this._y = value + this.height;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 "use strict";
 var nin;
 (function (nin) {
-    var GLUtil = /** @class */ (function () {
+    var GLUtil = (function () {
         function GLUtil() {
         }
         GLUtil.initgl = function (canvas) {
@@ -17,18 +17,16 @@ var nin;
         };
         GLUtil.fillScissor = function (color, gl, rect, canvas) {
             gl.enable(gl.SCISSOR_TEST);
-            gl.scissor(rect.x, canvas.height - (rect.height + rect.y), rect.width, rect.height); // TODO: Change this when rect properties are implemented.
-            gl.clearColor.apply(// TODO: Change this when rect properties are implemented.
-            gl, color._get_gl_compatible());
+            gl.scissor(rect.x, canvas.height - (rect.height + rect.y), rect.width, rect.height);
+            gl.clearColor.apply(gl, color._get_gl_compatible());
             gl.clear(gl.COLOR_BUFFER_BIT);
             gl.disable(gl.SCISSOR_TEST);
         };
-        // TODO: Highly experimental!! Not Implemented
         GLUtil.vertexShaderSource = "\nattribute vec2 position;\n\nvoid main() {\n  gl_Position = vec4(position, 0.0, 1.0);\n}\n";
         GLUtil.fragmentShaderSource = "\nprecision mediump float;\nuniform sampler2D texture;\nvarying vec2 texCoord;\n\nvoid main() {\n  gl_FragColor = texture2D(texture, texCoord);\n}\n";
         return GLUtil;
     }());
-    var Display = /** @class */ (function () {
+    var Display = (function () {
         function Display(canvasId) {
             var canvas;
             if (canvasId !== undefined) {
@@ -67,7 +65,7 @@ var nin;
         return Display;
     }());
     nin.Display = Display;
-    var Color = /** @class */ (function () {
+    var Color = (function () {
         function Color(r, g, b, a, is8bit) {
             this._R = r;
             this._G = g;
@@ -119,7 +117,7 @@ var nin;
         return Color;
     }());
     nin.Color = Color;
-    var Rect = /** @class */ (function () {
+    var Rect = (function () {
         function Rect(x, y, width, height) {
             this._x = x;
             this._y = y;
@@ -157,6 +155,70 @@ var nin;
             get: function () { return this._height; },
             set: function (value) {
                 this._height = value;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(Rect.prototype, "centerx", {
+            get: function () { return this._x + (this._width / 2); },
+            set: function (value) {
+                this._x = value - (this.width / 2);
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(Rect.prototype, "centery", {
+            get: function () { return this._y + (this._height / 2); },
+            set: function (value) {
+                this._y = value - (this.height / 2);
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(Rect.prototype, "center", {
+            get: function () { return [this.centerx, this.centery]; },
+            set: function (value) {
+                this._x = value[0] - (this.width / 2);
+                this._y = value[1] - (this.height / 2);
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(Rect.prototype, "left", {
+            get: function () { return this._x; },
+            set: function (value) {
+                this._x = value;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(Rect.prototype, "right", {
+            get: function () { return this._x + this._width; },
+            set: function (value) {
+                this._x = value + this.width;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(Rect.prototype, "top", {
+            get: function () { return this._y; },
+            set: function (value) {
+                this._y = value;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(Rect.prototype, "bottom", {
+            get: function () { return this._y + this._height; },
+            set: function (value) {
+                this._y = value + this.height;
             },
             enumerable: false,
             configurable: true

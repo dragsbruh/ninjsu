@@ -2,6 +2,10 @@
 
 ## Changelog
 
+- v1.2.0-alpha
+  - Added rect properties (experimental)
+  - 2nd June 2023
+
 - v1.1.0-alpha
   - Added Rects
   - Modified display.fill to render rects
