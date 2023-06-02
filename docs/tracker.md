@@ -2,7 +2,6 @@
 
 ## TO-DO
 
-- [ ]    Add mouse events
 - [ ]    Add keyboard events
 - [ ]    Add audio playback
 - [ ]    Add masks
@@ -10,12 +9,13 @@
 - [ ]    Add image loading
 - [ ]    Add Surface rendering
 - [ ]    Add Surface
-- [x]    Add rect area fill
-- [x]    Add rects
+- [x]    Add mouse events             (v1.3.0-alpha)
+- [x]    Add rect area fill           (v1.1.0-alpha)
+- [x]    Add rects                    (v1.1.0-alpha)
 
 ## BUGS
 
-_no bugs were noticed_
+- [ ]    Mouse position goes weird when window is resized.
 
 ## VULNERABILITIES
 

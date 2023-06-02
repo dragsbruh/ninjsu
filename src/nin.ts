@@ -58,8 +58,11 @@ namespace nin {
 				GLUtil.fillScissor(color, this._gl, rect, this._canvas);
 			}
 		}
-		public _get_gl_context() {
+		public _get_gl_context(): WebGLRenderingContext {
 			return this._gl;
+		}
+		public _get_canvas_element(): HTMLCanvasElement {
+			return this._canvas;
 		}
 	}
 
@@ -103,10 +106,10 @@ namespace nin {
 	}
 
 	export class Rect {
-		private _x		: number;
-		private _y		: number;
-		private _width	: number;
-		private _height	: number;
+		private _x: number;
+		private _y: number;
+		private _width: number;
+		private _height: number;
 
 		constructor(x: number, y: number, width: number, height: number) {
 			this._x = x;
@@ -160,5 +163,54 @@ namespace nin {
 		set bottom(value: number) {
 			this._y = value + this.height;
 		}
+
+		public collidepoint(point: [number, number]): boolean {
+			if (point[0] > this.left && point[0] < this.right) {
+				if (point[1] > this.top && point[1] < this.bottom) {
+					return true;
+				}
+			}
+			return false;
+		}
+	}
+
+	export class mouse {
+		public static pressed: [boolean, boolean, boolean] = [false, false, false]; // LEFT, MIDDLE, RIGHT
+		public static pos: [number, number] = [0, 0];
+		public static inctx: boolean = false; // Represents if the mouse is in canvas
+
+		public static enable_mouse(display: Display) {
+			const canvas = display._get_canvas_element();
+
+			const canvas_rect = canvas.getBoundingClientRect();
+			const offsetX = canvas_rect.left;
+			const offsetY = canvas_rect.top;
+
+			canvas.addEventListener('mousemove', (e) => {
+				const x = e.clientX - offsetX;
+				const y = e.clientY - offsetY;
+				mouse.pos = [x, y];
+			});
+
+			canvas.addEventListener('mouseenter', () => {
+				mouse.inctx = true;
+			});
+
+			canvas.addEventListener('mouseleave', () => {
+				mouse.inctx = false;
+			});
+
+			canvas.addEventListener('mousedown', (e) => {
+				mouse.handle_mouse_press(e.button, true);
+			});
+
+			canvas.addEventListener('mouseup', (e) => {
+				mouse.handle_mouse_press(e.button, false);
+			});
+		}
+
+		private static handle_mouse_press = (button: number, down: boolean) => {
+			mouse.pressed[button] = down;
+		};
 	}
 }

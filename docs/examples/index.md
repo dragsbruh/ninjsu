@@ -4,6 +4,7 @@
 
 _Here is a list of examples of NinJSu_
 
+- [Sticky Rect (ninjsu v1.3.0-alpha)](./sticky_rect/)
 - [Moving Rect (ninjsu v1.1.0-alpha)](./moving_rect/)
 - [Colors Showcase (ninjsu v1.0.0-alpha)](./color_showcase/)
 
