@@ -5,6 +5,7 @@
 
 ## About
 
+[I WONT BE WORKING ON THIS PROJECT FOR 2-4 MONTHS]
 NinJSu is a javascript game development library designed to give maximum control.
 It is written in typescript and webgl.
 
