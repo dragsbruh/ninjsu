@@ -29,6 +29,8 @@ namespace nin {
 		private _canvas: HTMLCanvasElement;
 		private _gl: WebGLRenderingContext;
 		private _id: string | undefined;
+		private _key_enabled: boolean = false;
+
 		constructor(canvasId?: string) {
 			let canvas;
 			if (canvasId !== undefined) {
@@ -63,6 +65,9 @@ namespace nin {
 		}
 		public _get_canvas_element(): HTMLCanvasElement {
 			return this._canvas;
+		}
+		public _get_keyboard_enabled(): boolean {
+			return this._key_enabled;
 		}
 	}
 
@@ -182,14 +187,8 @@ namespace nin {
 		public static enable_mouse(display: Display) {
 			const canvas = display._get_canvas_element();
 
-			const canvas_rect = canvas.getBoundingClientRect();
-			const offsetX = canvas_rect.left;
-			const offsetY = canvas_rect.top;
-
 			canvas.addEventListener('mousemove', (e) => {
-				const x = e.clientX - offsetX;
-				const y = e.clientY - offsetY;
-				mouse.pos = [x, y];
+				mouse.handle_mouse_move(e, canvas);
 			});
 
 			canvas.addEventListener('mouseenter', () => {
@@ -212,5 +211,45 @@ namespace nin {
 		private static handle_mouse_press = (button: number, down: boolean) => {
 			mouse.pressed[button] = down;
 		};
+		private static handle_mouse_move(e: MouseEvent, canvas: HTMLCanvasElement) {
+			const canvas_rect = canvas.getBoundingClientRect();
+			const offsetX = canvas_rect.left;
+			const offsetY = canvas_rect.top;
+			const x = e.clientX - offsetX;
+			const y = e.clientY - offsetY;
+			mouse.pos = [x, y];
+		}
+	}
+
+	export class key {
+		public static _is_enabled: boolean = false;
+		public static _pressed: Record<string, boolean> = {};
+
+		public static enable() {
+			if (!key._is_enabled) {
+				key._enable(window)
+			}
+			key._is_enabled = true;
+		}
+		private static _enable(element: HTMLElement | Window) {
+			element.addEventListener('keydown', (e) => {
+				key.register_keydown(e as KeyboardEvent);
+			})
+			element.addEventListener('keyup', (e) => {
+				key.register_keyup(e as KeyboardEvent);
+			})
+		}
+		private static register_keydown(e: KeyboardEvent) {
+			let normalized_key = e.key.toUpperCase();
+			key._pressed[normalized_key] = true;
+		}
+		private static register_keyup(e: KeyboardEvent) {
+			let normalized_key = e.key.toUpperCase();
+			key._pressed[normalized_key] = false;
+		}
+		public static ispressed(key: string) {
+			const normalizedKey = key.toUpperCase();
+			return this._pressed[normalizedKey] || false;
+		}
 	}
 }

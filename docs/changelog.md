@@ -2,6 +2,11 @@
 
 ## Changelog
 
+- v1.4.0-alpha
+  - Added keyboard input
+  - Fixed a bug with mouse
+  - 6th June 2023
+
 - v1.3.0-alpha
   - Added mouse events (buggy)
   - Added display._get_canvas_element()

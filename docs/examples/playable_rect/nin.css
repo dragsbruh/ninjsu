@@ -1,0 +1,21 @@
+body {
+	background-color: black;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.nin-game-canvas {
+	border: 2px solid white;
+}
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+Modify this file to suit your needs.
+THIS FILE IS NOT A PART OF NINJSU, however we think this does enhance some ninjsu stuff.
+SO IT DOESNT MATTER IF THIS FILE IS CHANGED, WE DO NOT CARE ABOUT THIS USELESS FILE.
+do not complain that this file is bad.
+*/
